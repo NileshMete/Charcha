@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Real-Time Chat App</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <div class="chat-container">
+    <header class="chat-header">
+      <h1>Chat App</h1>
+      <div class="user-count">
+        <span id="online-count">0</span> online
+      </div>
+      <div class="current-room" id="current-room" style="margin-left: 1rem; font-weight: 600;">
+        Room: <span id="room-name">None</span>
+      </div>
+    </header>
+
+    <main class="chat-main">
+      <div class="messages" id="messages">
+        <!-- Messages will be inserted here -->
+        <div class="welcome-message">
+          Welcome to the chat room! 👋
+        </div>
+      </div>
+    </main>
+
+    <div id="typing-indicator" class="typing-indicator">
+      <!-- Typing indicator will appear here -->
+    </div>
+
+    <footer class="chat-form-container">
+      <form id="chat-form" class="chat-form">
+        <input
+          id="message-input"
+          type="text"
+          placeholder="Type a message..."
+          autocomplete="off"
+          required
+          disabled
+        />
+        <button type="submit" id="send-btn" disabled>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </form>
+    </footer>
+  </div>
+
+  <div id="username-modal" class="modal">
+    <div class="modal-content">
+      <h2>Enter Username</h2>
+      <form id="username-form">
+        <input
+          type="text"
+          id="username-input"
+          placeholder="Your name"
+          minlength="1"
+          maxlength="14"
+          required
+        />
+        <button type="submit" id="username-submit">Next</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="room-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <h2>Join a Chat Room</h2>
+      <form id="room-form">
+        <input
+          type="text"
+          id="room-input"
+          placeholder="Room name"
+          minlength="1"
+          maxlength="20"
+          required
+        />
+        <button type="submit" id="room-submit">Join Room</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
